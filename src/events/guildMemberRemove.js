@@ -1,16 +1,8 @@
-const applyText = (canvas, text) => {
-    const ctx = canvas.getContext('2d');
-    let fontSize = 70;
+const Canvas = require('canvas');
+const Discord = require('discord.js');
 
-    do {
-        ctx.font = `${fontSize -= 10}px sans-serif`;
-    } while (ctx.measureText(text).width > canvas.width - 300);
-
-    return ctx.font;
-};
-
-client.on('guildMemberAdd', async member => {
-    const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
+module.exports = async (client, member) => {
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'farewell');
     if (!channel) return;
 
     const canvas = Canvas.createCanvas(1100, 500);
@@ -26,7 +18,7 @@ client.on('guildMemberAdd', async member => {
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.fillText(member.user.tag, canvas.width / 2, 380);
-    ctx.fillText('Just joined the Inferno!', canvas.width / 2, 430);
+    ctx.fillText('Just left the Inferno!', canvas.width / 2, 430);
 
     ctx.beginPath();
     ctx.arc(550, 190, 125, 0, Math.PI * 2, true);
@@ -47,5 +39,6 @@ client.on('guildMemberAdd', async member => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
 
-    channel.send(`Hello, ${member}! \nWelcome to Hudas Fans Club! \nPlease check <#736765023342428160> then click the :white_check_mark: to accept our rules! Enjoy!`, attachment);
-});
+    var ruleschannel = channel.client.channels.cache.find(channel => channel.name === 'rules-and-info');
+    channel.send(`${member} just left the inferno 😭\nPlease comeback 🥺👉👈`, attachment).catch(console.error);
+};
