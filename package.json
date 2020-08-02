@@ -1,0 +1,32 @@
+{
+  "name": "hudasbot-discord",
+  "version": "1.0.0",
+  "description": "HudasBot-discord",
+  "main": "src/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nesperida911/HudasBot-discord.git"
+  },
+  "author": "Fernando Nicolei Esperida",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nesperida911/HudasBot-discord/issues"
+  },
+  "homepage": "https://github.com/nesperida911/HudasBot-discord#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "canvas": "^2.6.1",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "glob": "^7.1.6",
+    "moment": "^2.27.0",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-tesseract": "0.0.3"
+  }
+}
