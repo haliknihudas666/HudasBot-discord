@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const Canvas = require('canvas');
+fetch = require("node-fetch");
 const client = new Discord.Client({
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
@@ -41,7 +42,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	}
 });
 
-client.on('message', msg => {
+client.on('message', async msg => {
 	//Check if the message is sent by a bot
 	if (!msg.content.startsWith(config.PREFIX) || msg.author.bot) return;
 
@@ -83,6 +84,33 @@ client.on('message', msg => {
 	//join test
 	if (command === 'leave') {
 		client.emit('guildMemberRemove', msg.member);
+	}
+
+	const url = 'https://icanhazdadjoke.com/';
+	const options = {
+		method: 'GET',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json;charset=UTF-8'
+		}
+	};
+
+	if (command === 'dadjoke') {
+		const res = await fetch(url, options);
+		const json = await res.json();
+		console.log(json);
+
+		msg.channel.send(json.joke);
+	}
+
+	if (command === 'swear') {
+		if (!msg.mentions.users.size) {
+			msg.channel.send('Hey <@' + msg.author.id + '>! You need to tag a user to swear!');
+		} else {
+			const taggedUser = msg.mentions.users.first();
+			msg.channel.send('Tangina mo <@' + taggedUser.id + '>');
+		}
+
 	}
 });
 
@@ -145,7 +173,7 @@ client.on('guildMemberRemove', async member => {
 	ctx.fillStyle = '#ffffff';
 	ctx.textAlign = 'center';
 	ctx.fillText(member.user.tag, canvas.width / 2, 380);
-	ctx.fillText('Just leaved the Inferno!', canvas.width / 2, 430);
+	ctx.fillText('Just left the Inferno!', canvas.width / 2, 430);
 
 	ctx.beginPath();
 	ctx.arc(550, 190, 125, 0, Math.PI * 2, true);
