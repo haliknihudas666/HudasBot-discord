@@ -11,7 +11,7 @@ module.exports = async (client, member) => {
     const background = await Canvas.loadImage('https://nesperida911.github.io/assets/card-dark-bg.png');
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    ctx.font = '40px san-serif';
+    ctx.font = '40px Arial';
     // ctx.strokeStyle = 'black';
     // ctx.lineWidth = 1;
     // ctx.strokeText(member.user.tag + ' just joined the inferno!', canvas.width - 696, 350);
@@ -37,8 +37,7 @@ module.exports = async (client, member) => {
     ctx.lineWidth = 10;
     ctx.stroke();
 
-    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'farewell-image.png');
 
-    var ruleschannel = channel.client.channels.cache.find(channel => channel.name === 'rules-and-info');
-    channel.send(`${member} just left the inferno 😭\nPlease comeback 🥺👉👈`, attachment).catch(console.error);
+    channel.send(`**${member.user.tag}** just left the inferno 😭\nPlease comeback 🥺👉👈`, attachment).catch(console.error);
 };

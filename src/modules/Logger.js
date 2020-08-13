@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const moment = require("moment");
 
 exports.log = (content, type = "log") => {
-  const timestamp = `[${moment().format("YYYY-MM-DD HH:mm:ss")}]:`;
+  const timestamp = `[${moment().utcOffset('+0800').format("YYYY-MM-DD h:mm:ss a")}]:`;
   switch (type) {
     case "log": {
       return console.log(`${timestamp} ${chalk.bgBlue(type.toUpperCase())} ${content} `);
@@ -27,7 +27,7 @@ exports.log = (content, type = "log") => {
     }
     default: throw new TypeError("Logger type must be either warn, debug, log, ready, cmd or error.");
   }
-}; 
+};
 
 exports.error = (...args) => this.log(...args, "error");
 

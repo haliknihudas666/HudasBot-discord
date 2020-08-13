@@ -6,5 +6,6 @@ module.exports = async client => {
   client.user.setActivity("Follow me on twitch!", {
     type: "STREAMING",
     url: "https://www.twitch.tv/haliknihudas666"
-  })
+  });
+
 };

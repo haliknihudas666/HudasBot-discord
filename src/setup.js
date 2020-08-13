@@ -7,9 +7,9 @@ let baseConfig = fs.readFileSync(path.resolve(__dirname, "./config_base.txt"), "
 
 const defaultSettings = {
   "prefix": "h!",
-  "modLogChannel": "mod-log",
-  "modRole": "Guardian of Inferno",
-  "adminRole": "Halik Ni Hudas",
+  "modLogChannel": "",
+  "modRole": "",
+  "adminRole": "",
   "systemNotice": "true",
   "welcomeChannel": "welcome",
   "welcomeMessage": "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
@@ -24,21 +24,21 @@ const settings = new Enmap({
 
 
 let prompts = [{
-    type: "list",
-    name: "resetDefaults",
-    message: "Do you want to reset default settings?",
-    choices: ["Yes", "No"]
-  },
-  {
-    type: "input",
-    name: "token",
-    message: "Please enter the bot token from the application page."
-  },
-  {
-    type: "input",
-    name: "ownerID",
-    message: "Please enter the bot owner's User ID"
-  },
+  type: "list",
+  name: "resetDefaults",
+  message: "Do you want to reset default settings?",
+  choices: ["Yes", "No"]
+},
+{
+  type: "input",
+  name: "token",
+  message: "Please enter the bot token from the application page."
+},
+{
+  type: "input",
+  name: "ownerID",
+  message: "Please enter the bot owner's User ID"
+},
 ];
 
 (async function () {

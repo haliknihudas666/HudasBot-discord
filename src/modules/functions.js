@@ -114,10 +114,95 @@ module.exports = (client) => {
     return text;
   };
 
-  client.loadCommand = (commandName) => {
+  client.loadAdmin = (commandName) => {
     try {
       client.logger.log(`Loading Command: ${commandName}`);
-      const props = require(`../commands/${commandName}`);
+      const props = require(`../commands/admin/${commandName}`);
+      if (props.init) {
+        props.init(client);
+      }
+      client.commands.set(props.help.name, props);
+      props.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+      return false;
+    } catch (e) {
+      return `Unable to load command ${commandName}: ${e}`;
+    }
+  };
+
+  client.loadFun = (commandName) => {
+    try {
+      client.logger.log(`Loading Command: ${commandName}`);
+      const props = require(`../commands/fun/${commandName}`);
+      if (props.init) {
+        props.init(client);
+      }
+      client.commands.set(props.help.name, props);
+      props.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+      return false;
+    } catch (e) {
+      return `Unable to load command ${commandName}: ${e}`;
+    }
+  };
+
+  client.loadGeneral = (commandName) => {
+    try {
+      client.logger.log(`Loading Command: ${commandName}`);
+      const props = require(`../commands/general/${commandName}`);
+      if (props.init) {
+        props.init(client);
+      }
+      client.commands.set(props.help.name, props);
+      props.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+      return false;
+    } catch (e) {
+      return `Unable to load command ${commandName}: ${e}`;
+    }
+  };
+
+  client.loadMisc = (commandName) => {
+    try {
+      client.logger.log(`Loading Command: ${commandName}`);
+      const props = require(`../commands/misc/${commandName}`);
+      if (props.init) {
+        props.init(client);
+      }
+      client.commands.set(props.help.name, props);
+      props.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+      return false;
+    } catch (e) {
+      return `Unable to load command ${commandName}: ${e}`;
+    }
+  };
+
+  client.loadModeration = (commandName) => {
+    try {
+      client.logger.log(`Loading Command: ${commandName}`);
+      const props = require(`../commands/moderation/${commandName}`);
+      if (props.init) {
+        props.init(client);
+      }
+      client.commands.set(props.help.name, props);
+      props.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, props.help.name);
+      });
+      return false;
+    } catch (e) {
+      return `Unable to load command ${commandName}: ${e}`;
+    }
+  };
+
+  client.loadNsfw = (commandName) => {
+    try {
+      client.logger.log(`Loading Command: ${commandName}`);
+      const props = require(`../commands/nsfw/${commandName}`);
       if (props.init) {
         props.init(client);
       }

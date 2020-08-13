@@ -12,21 +12,22 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 
     const res = await fetch(url, options);
     const json = await res.json();
-    console.log(json);
 
+    message.channel.startTyping();
     message.channel.send(json.joke);
+    message.channel.stopTyping();
 };
 
 exports.conf = {
     enabled: true,
-    guildOnly: true,
+    guildOnly: false,
     aliases: [],
     permLevel: "User"
 };
 
 exports.help = {
     name: "dadjoke",
-    category: "Miscelaneous",
+    category: "Fun",
     description: "Daddy Hudas is here again to throw some dad jokes.",
     usage: "dadjoke"
 };

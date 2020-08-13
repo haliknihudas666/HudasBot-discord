@@ -12,6 +12,6 @@ exports.conf = {
 exports.help = {
     name: "leave",
     category: "Debugging Tools",
-    description: "",
+    description: "Test the Leave Card",
     usage: "leave"
 };
