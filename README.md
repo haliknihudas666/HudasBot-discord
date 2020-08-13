@@ -1,8 +1,9 @@
-# Hudas Bot
+# **Hudas Bot**
 
 This bot is a fork of [AnIdiotGuide's guidebot](https://github.com/AnIdiotsGuide/guidebot)
 
 You can join on my Discord Server to take a look on Hudas Bot Commands and Events
+
 [![Discord chat][discord-badge]][discord-url]
 
 [discord-badge]: https://img.shields.io/discord/516653830176505879?label=Hudas%20Inferno&logo=discord&style=for-the-badge
