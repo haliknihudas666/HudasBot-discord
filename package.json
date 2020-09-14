@@ -8,7 +8,7 @@
     "postinstall": "node src/setup.js"
   },
   "engines": {
-    "node": "12.x"
+    "node": ">=12.x"
   },
   "repository": {
     "type": "git",
@@ -27,16 +27,18 @@
     "better-sqlite3": "^7.1.0",
     "canvas": "^2.6.1",
     "chalk": "^4.0.0",
-    "discord.js": "^12.2.0",
+    "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "enmap": "^5.4.1",
+    "ffmpeg-static": "^4.2.7",
     "glob": "^7.1.6",
     "imageapi.js": "^1.0.9",
     "inquirer": "^7.1.0",
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
     "reddit-simple": "^2.1.1",
-    "util": "^0.12.3"
+    "util": "^0.12.3",
+    "ytdl-core": "^3.2.2"
   },
   "devDependencies": {
     "eslint": "^7.5.0",
